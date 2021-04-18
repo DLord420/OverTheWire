@@ -1,0 +1,60 @@
+### Krypton
+Krypton
+
+/krypton/
+
+--->lvl0
+echo S1JZUFRPTklTR1JFQVQ= | base64 -d:
+KRYPTONISGREAT
+-----
+
+
+--->lvl1
+ssh krypton1@krypton.labs.overthewire.org -p 2231
+-----
+ROTTEN
+-----
+
+
+--->lvl2
+ssh krypton2@krypton.labs.overthewire.org -p 2231
+-----
+CAESARISEASY
+-----
+
+
+--->lvl3
+ssh krypton3@krypton.labs.overthewire.org -p 2231
+-----
+BRUTE
+-----
+
+
+-->lvl4
+ssh krypton4@krypton.labs.overthewire.org -p 2231
+-----
+CLEARTEXT
+-----
+
+
+--->lvl5
+ssh krypton5@krypton.labs.overthewire.org -p 2231
+-----
+RANDOM
+-----
+
+
+-->lvl6
+ssh krypton7@krypton.labs.overthewire.org -p 2231
+-----
+LFSRISNOTRANDOM
+-----
+
+
+
+
+
+
+
+
+

